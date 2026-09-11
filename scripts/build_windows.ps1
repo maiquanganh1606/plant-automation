@@ -1,16 +1,26 @@
+param(
+  [string]$PythonExecutable = $env:PLANT_AUTOMATION_PYTHON
+)
+
 # Build a Windows customer release. Run in PowerShell on Windows, with Python 3.10+.
 $ErrorActionPreference = "Stop"
 $Project = Split-Path -Parent $PSScriptRoot
 Set-Location $Project
 
-python -m PyInstaller --version | Out-Null
+if ([string]::IsNullOrWhiteSpace($PythonExecutable)) {
+  $PythonExecutable = (Get-Command python -ErrorAction Stop).Source
+}
+if (!(Test-Path $PythonExecutable)) { throw "Không tìm thấy Python được chỉ định: $PythonExecutable" }
+Write-Host "Dùng Python: $PythonExecutable"
+
+& $PythonExecutable -m PyInstaller --version | Out-Null
 if ($LASTEXITCODE -ne 0) {
-  python -m pip install --upgrade pyinstaller
+  & $PythonExecutable -m pip install --upgrade pyinstaller
   if ($LASTEXITCODE -ne 0) { throw "Không cài được PyInstaller bằng Python đang dùng." }
 }
 $env:PYINSTALLER_CONFIG_DIR = Join-Path $Project ".pyinstaller"
 Remove-Item -Recurse -Force build, dist, release -ErrorAction SilentlyContinue
-python -m PyInstaller --noconfirm --clean --windowed `
+& $PythonExecutable -m PyInstaller --noconfirm --clean --windowed `
   --name "Plant Automation" `
   --add-data "$Project\config;config" `
   --add-data "$Project\captures;captures" `

@@ -1,4 +1,5 @@
 import unittest
+import sys
 from unittest.mock import patch
 
 from plant_automation.dependency_setup import check_dependencies, missing_summary
@@ -24,7 +25,7 @@ class DependencySetupTests(unittest.TestCase):
         import tempfile
 
         with tempfile.TemporaryDirectory() as directory:
-            executable = Path(directory) / "adb"
+            executable = Path(directory) / ("adb.exe" if sys.platform == "win32" else "adb")
             executable.write_text("#!/bin/sh\n")
             executable.chmod(0o755)
             with patch("plant_automation.external_tools.shutil.which", return_value=None):

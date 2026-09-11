@@ -5,6 +5,14 @@ description = "Personal Android USB automation MVP using ADB and scrcpy"
 requires-python = ">=3.10"
 dependencies = ["opencv-python>=4.8", "PySide6>=6.8"]
 
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["plant_automation*"]
+exclude = ["config*", "captures*", "scenarios*", "tests*"]
+
 [project.scripts]
 plant-automation = "plant_automation.cli:main"
 

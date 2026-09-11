@@ -13,7 +13,7 @@ Phiên bản này tự động trồng, tưới và thu hoạch trong ứng dụ
 
 **macOS:** mở `Plant Automation.app`. Nếu macOS chặn lần đầu, giữ Control, bấm ứng dụng và chọn **Open**.
 
-**Windows:** giải nén gói ZIP, sau đó mở `Plant Automation.exe`. Không di chuyển riêng tệp EXE ra ngoài thư mục đã giải nén.
+**Windows:** chạy `Plant-Automation-Windows-Setup.exe`, bấm **Install**, rồi mở ứng dụng từ Desktop hoặc Start Menu. Không cần cài Python. Nếu dùng bản ZIP portable, hãy giải nén toàn bộ thư mục trước khi mở `Plant Automation.exe`.
 
 Màn hình Dashboard sẽ hiển thị điện thoại đã kết nối, ảnh xem trước, 16 ô đất và nhật ký hoạt động.
 App tự nhận ADB/scrcpy ở các vị trí phổ biến của Homebrew và Android Studio, kể cả khi bạn mở app từ Finder thay vì Terminal.

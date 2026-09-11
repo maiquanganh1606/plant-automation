@@ -41,9 +41,23 @@ jobs:
           $python = Join-Path $env:PythonLocation "python.exe"
           ./scripts/build_windows.ps1 -PythonExecutable $python
 
+      - name: Build Windows installer
+        shell: pwsh
+        run: |
+          choco install innosetup --no-progress -y
+          $iscc = (Get-Command iscc.exe -ErrorAction SilentlyContinue).Source
+          if ([string]::IsNullOrWhiteSpace($iscc)) {
+            $iscc = Join-Path ${env:ProgramFiles(x86)} "Inno Setup 6\ISCC.exe"
+          }
+          if (!(Test-Path $iscc)) { throw "Không tìm thấy Inno Setup sau khi cài." }
+          & $iscc "$env:GITHUB_WORKSPACE\installer\PlantAutomation.iss"
+          if ($LASTEXITCODE -ne 0) { throw "Inno Setup không thể tạo bộ cài Windows." }
+
       - name: Upload Windows package
         uses: actions/upload-artifact@v4
         with:
           name: Plant-Automation-Windows
-          path: release/Plant-Automation-Windows.zip
+          path: |
+            release/Plant-Automation-Windows.zip
+            release/Plant-Automation-Windows-Setup.exe
           if-no-files-found: error

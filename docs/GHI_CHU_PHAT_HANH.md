@@ -9,7 +9,9 @@ Gói phát hành tạo ra ứng dụng desktop có giao diện Qt và toàn bộ
 
 Không dùng macOS để tạo bản Windows hoặc ngược lại. PyInstaller tạo mã thực thi cho chính hệ điều hành đang chạy.
 
-Tệp gửi khách nằm tại `release/Plant-Automation-macOS.zip` hoặc `release/Plant-Automation-Windows.zip`.
+Tệp gửi khách nằm tại `release/Plant-Automation-macOS.zip`, `release/Plant-Automation-Windows-Setup.exe` (khuyến nghị) hoặc `release/Plant-Automation-Windows.zip` (portable).
+
+Bản Windows Setup dùng Inno Setup, cài theo tài khoản người dùng nên thường không cần quyền quản trị để cài ứng dụng. Sau khi cài, app kiểm tra ADB/scrcpy và hiển thị nút cài có xác nhận nếu còn thiếu.
 
 ## Điều kiện giao hàng
 

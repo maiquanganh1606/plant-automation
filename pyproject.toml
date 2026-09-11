@@ -1,0 +1,12 @@
+[project]
+name = "plant-automation"
+version = "0.1.0"
+description = "Personal Android USB automation MVP using ADB and scrcpy"
+requires-python = ">=3.10"
+dependencies = ["opencv-python>=4.8", "PySide6>=6.8"]
+
+[project.scripts]
+plant-automation = "plant_automation.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

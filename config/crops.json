@@ -1,0 +1,22 @@
+{
+  "crops": [
+    {
+      "id": "cucumber",
+      "name": "Dưa leo",
+      "seed_position": [794, 949],
+      "seed_template": "captures/cucumber-seed-template.png",
+      "template_min_score": 0.82,
+      "extra_taps": 2,
+      "tap_delay_s": 0.25
+    },
+    {
+      "id": "sunflower",
+      "name": "Hướng dương",
+      "seed_position": [990, 949],
+      "seed_template": "captures/seeds/sunflower.png",
+      "template_min_score": 0.82,
+      "extra_taps": 2,
+      "tap_delay_s": 0.25
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+captures/*
+!captures/cucumber-seed-template.png
+!captures/empty-reference.png
+!captures/water-notice.png
+!captures/harvest-notice.png
+!captures/seeds/
+captures/seeds/*
+.pytest_cache/
+build/
+dist/
+.pyinstaller/
+release/
+.DS_Store

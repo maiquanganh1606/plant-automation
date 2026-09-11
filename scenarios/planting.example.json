@@ -1,0 +1,10 @@
+{
+  "name": "Kịch bản trồng cây mẫu - thay tọa độ theo ứng dụng của bạn",
+  "actions": [
+    {"type": "tap", "x": 540, "y": 1820},
+    {"type": "wait", "seconds": 1},
+    {"type": "tap", "x": 280, "y": 1480},
+    {"type": "wait", "seconds": 0.5},
+    {"type": "screenshot"}
+  ]
+}

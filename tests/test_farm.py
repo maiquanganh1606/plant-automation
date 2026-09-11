@@ -1,4 +1,5 @@
 from pathlib import Path
+import tempfile
 import unittest
 
 import cv2
@@ -9,8 +10,11 @@ from plant_automation.farm import PLOT_CENTERS, inspect
 
 class FarmVisionTests(unittest.TestCase):
     def setUp(self) -> None:
-        self.reference_path = Path("/private/tmp/farm-reference.png")
-        self.current_path = Path("/private/tmp/farm-current.png")
+        self.tempdir = tempfile.TemporaryDirectory(prefix="plant-farm-test-")
+        self.addCleanup(self.tempdir.cleanup)
+        directory = Path(self.tempdir.name)
+        self.reference_path = directory / "farm-reference.png"
+        self.current_path = directory / "farm-current.png"
         self.reference = np.full((1080, 2340, 3), 160, dtype=np.uint8)
         cv2.imwrite(str(self.reference_path), self.reference)
 
